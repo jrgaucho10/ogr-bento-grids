@@ -1,0 +1,35 @@
+OGR Bento Grids — Install on macOS
+==================================
+
+1. Unzip OGR-Bento-Grids-Plugin.zip if you have not already.
+2. Move the ogr-bento-grids folder somewhere permanent, e.g. ~/Documents/ogr-bento-grids.
+   (The installer links Illustrator to this folder, so do not delete it
+   afterwards. If you move it later, run the installer again.)
+3. Quit Adobe Illustrator completely (Cmd+Q).
+4. Open the OGR Bento Grids folder, then right-click install.command and choose Open.
+   If macOS blocks it, open Terminal and run:
+
+     cd ~/Documents/ogr-bento-grids
+     chmod +x install.command
+     ./install.command
+
+5. Reopen Illustrator.
+6. Go to Window > Extensions > OGR Bento Grids.
+
+
+If OGR Bento Grids is not in the menu
+-------------------------------------
+- Quit Illustrator completely and reopen.
+- If the folder was downloaded from email or a browser, run:
+
+    xattr -dr com.apple.quarantine ~/Documents/ogr-bento-grids
+
+  then run the installer again.
+
+
+Uninstall
+---------
+1. Quit Illustrator.
+2. Double-click uninstall.command.
+
+OGR Bento Grids layers already drawn in .ai files are not removed.

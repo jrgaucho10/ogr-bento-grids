@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OGR Bento Grids</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="app-head">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="brand-text">
+        <strong>OGR Bento Grids</strong>
+        <small>Bento layouts</small>
+      </span>
+    </div>
+    <div class="head-actions">
+      <button class="ghost-btn" id="clearBtn" type="button" title="Remove all OGR Bento layers">Clear</button>
+      <button class="ghost-btn with-icon" id="guidesBtn" type="button" title="Convert the last grid into Illustrator guides">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 11.5h12M5.5 2v12M10.5 2v12" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="2 1.5"/></svg>
+        Guides
+      </button>
+    </div>
+  </header>
+
+  <div class="context" id="context">
+    <span class="dot" id="docDot" aria-hidden="true"></span>
+    <span class="doc-name" id="docName">No document</span>
+    <span class="sel-badge" id="selBadge">No selection</span>
+  </div>
+
+  <main class="panels" id="panels">
+    <section class="panel is-active" data-panel="bento" role="tabpanel">
+      <div class="intro">
+        <h1>Bento grid</h1>
+        <p>Draw a rectangle, pick a style, then tune sections, corners and gutter. Shuffle for new arrangements, finalise to plain shapes.</p>
+      </div>
+
+      <div class="notice" id="bentoNotice">Open a document to begin.</div>
+
+      <div class="field">
+        <span class="field-label">Style</span>
+        <div class="option-grid" data-group="style" role="group" aria-label="Bento style">
+          <button class="option is-active" type="button" data-value="simple" aria-pressed="true">
+            <svg viewBox="0 0 52 36" aria-hidden="true"><rect x="7.5" y="4.5" width="37" height="27" fill="none" stroke="currentColor" stroke-width=".9"/><path d="M7.5 13.5h37M7.5 22.5h37M16.75 4.5v27M26 4.5v27M35.25 4.5v27" stroke="currentColor" stroke-width=".55" opacity=".55"/></svg>
+            <span>Simple</span>
+          </button>
+          <button class="option" type="button" data-value="centered" aria-pressed="false">
+            <svg viewBox="0 0 52 36" aria-hidden="true"><rect x="7.5" y="4.5" width="37" height="27" fill="none" stroke="currentColor" stroke-width=".9"/><rect x="16" y="10" width="20" height="16" fill="none" stroke="currentColor" stroke-width=".7" opacity=".7"/></svg>
+            <span>Centered</span>
+          </button>
+          <button class="option" type="button" data-value="brick" aria-pressed="false">
+            <svg viewBox="0 0 52 36" aria-hidden="true"><rect x="7.5" y="4.5" width="37" height="27" fill="none" stroke="currentColor" stroke-width=".9"/><path d="M7.5 13.5h37M7.5 22.5h37M16.75 4.5v9M26 4.5v9M35.25 4.5v9M12.125 13.5v9M21.375 13.5v9M30.625 13.5v9M39.875 13.5v9M16.75 22.5v9M26 22.5v9M35.25 22.5v9" stroke="currentColor" stroke-width=".55" opacity=".55"/></svg>
+            <span>Brick</span>
+          </button>
+          <button class="option" type="button" data-value="random" aria-pressed="false">
+            <svg viewBox="0 0 52 36" aria-hidden="true"><rect x="7.5" y="4.5" width="37" height="27" fill="none" stroke="currentColor" stroke-width=".9"/><path d="M7.5 4.5h14v11h-14zM21.5 4.5h23v7h-23zM21.5 11.5h10v20h-10zM31.5 11.5h13v20h-13zM7.5 15.5h14v16h-14z" stroke="currentColor" stroke-width=".55" opacity=".55" fill="none"/></svg>
+            <span>Random</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <label for="sections">Sections</label>
+          <output id="sectionsOut" for="sections">6</output>
+        </div>
+        <input type="range" id="sections" min="2" max="24" step="1" value="6">
+        <p class="hint">Number of tiles</p>
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <label for="corners">Corners</label>
+          <output id="cornersOut" for="corners">8</output>
+        </div>
+        <input type="range" id="corners" min="0" max="60" step="1" value="8">
+        <p class="hint">Corner radius</p>
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <label for="gutter">Gutter</label>
+          <output id="gutterOut" for="gutter">12</output>
+        </div>
+        <input type="range" id="gutter" min="0" max="60" step="1" value="12">
+        <p class="hint">Spacing between tiles</p>
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <label for="strokeWidth">Stroke weight</label>
+          <output id="strokeWidthOut" for="strokeWidth">0.5</output>
+        </div>
+        <input type="range" id="strokeWidth" min="0.1" max="3" step="0.1" value="0.5">
+      </div>
+
+      <div class="field">
+        <span class="field-label">Fill color</span>
+        <input type="text" id="fillColor" value="#8b5cf6" maxlength="7" spellcheck="false" style="margin-bottom:6px">
+        <div class="swatches" data-group="color" role="group" aria-label="Color">
+          <button type="button" class="swatch is-active" data-value="#8b5cf6" style="background:#8b5cf6" aria-label="#8b5cf6"></button>
+          <button type="button" class="swatch" data-value="#54a7ff" style="background:#54a7ff" aria-label="#54a7ff"></button>
+          <button type="button" class="swatch" data-value="#22c55e" style="background:#22c55e" aria-label="#22c55e"></button>
+          <button type="button" class="swatch" data-value="#f59e0b" style="background:#f59e0b" aria-label="#f59e0b"></button>
+          <button type="button" class="swatch" data-value="#ef4444" style="background:#ef4444" aria-label="#ef4444"></button>
+          <button type="button" class="swatch" data-value="#6b7280" style="background:#6b7280" aria-label="#6b7280"></button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Target</span>
+        <div class="segmented" data-group="target" role="group" aria-label="Grid target">
+          <button type="button" class="is-active" data-value="selection" aria-pressed="true">Selection</button>
+          <button type="button" data-value="artboard" aria-pressed="false">Artboard</button>
+        </div>
+        <p class="hint">Draw a rectangle, then select it</p>
+      </div>
+
+      <div class="field">
+        <label class="check">
+          <input type="checkbox" id="replacePrev" checked>
+          <span>Replace previous</span>
+        </label>
+      </div>
+
+      <div class="field">
+        <button class="primary" id="createBtn" type="button">
+          <span id="createLabel">Generate grid</span>
+          <kbd class="key">⌘↵</kbd>
+        </button>
+      </div>
+      <div class="field">
+        <button class="ghost-btn" id="shuffleBtn" type="button">Shuffle</button>
+        <button class="ghost-btn" id="finaliseBtn" type="button">Finalise</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/CSInterface.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OGR Bento Grids — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0b0c0f;
+    --ink-soft: #1a1c21;
+    --paper: #f5f4ef;
+    --paper-2: #ecebe4;
+    --accent: #d8fe53;
+    --accent-2: #b8e03a;
+    --slate: #6b7079;
+    --faint: #a3a7af;
+    --line: #ddddd4;
+    --card: #ffffff;
+    --dark: #0b0c0f;
+    --danger: #e85b5b;
+    --ok: #3fb950;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, sans-serif;
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3,h4 { font-family: "Space Grotesk", sans-serif; letter-spacing: -0.02em; margin: 0; }
+  .display { font-family: "Space Grotesk", sans-serif; }
+  .mono { font-family: "SF Mono", ui-monospace, Menlo, monospace; }
+
+  .page { max-width: 1240px; margin: 0 auto; padding: 0 56px; }
+  section { padding: 112px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  /* Cover */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 72px 56px;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(216,254,83,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(216,254,83,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .cover .mark { display: grid; grid-template-columns: repeat(2, 18px); gap: 4px; }
+  .cover .mark i { width: 18px; height: 18px; border-radius: 3px; background: var(--accent); }
+  .cover .mark i:nth-child(2), .cover .mark i:nth-child(3) { opacity: .3; background: var(--paper); }
+  .cover h1 { font-size: 132px; font-weight: 700; line-height: 0.92; letter-spacing: -0.045em; position: relative; }
+  .cover .product-line { font-family: "Space Grotesk", sans-serif; font-weight: 500; font-size: 22px; color: var(--accent); letter-spacing: -0.01em; margin-top: 28px; position: relative; }
+  .cover .sub { font-size: 20px; color: var(--faint); margin-top: 20px; max-width: 620px; line-height: 1.5; position: relative; }
+  .cover .meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; position: relative; }
+  .cover .accent-bar { width: 96px; height: 4px; background: var(--accent); margin: 48px 0 32px; position: relative; }
+  .cover .version-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(216,254,83,0.4); border-radius: 999px; font-size: 12px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; position: relative; }
+
+  /* Section headers */
+  .eyebrow { font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--slate); font-weight: 600; }
+  .section-title { font-size: 52px; font-weight: 700; line-height: 1.02; margin-top: 14px; letter-spacing: -0.025em; }
+  .section-lead { font-size: 19px; color: var(--slate); max-width: 720px; margin-top: 18px; line-height: 1.5; }
+
+  /* TOC */
+  .toc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 56px; margin-top: 40px; }
+  .toc a { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 17px; font-weight: 500; transition: color .15s; }
+  .toc a:hover { color: var(--accent-2); }
+  .toc .num { color: var(--slate); font-family: "SF Mono", monospace; font-size: 13px; }
+
+  /* Logo display */
+  .logo-stage { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 72px; display: flex; align-items: center; justify-content: center; min-height: 300px; margin-top: 40px; box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
+  .logo-stage.dark { background: var(--ink); }
+  .logo-stage .wordmark { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 104px; letter-spacing: -0.04em; color: var(--ink); }
+  .logo-stage.dark .wordmark { color: var(--paper); }
+  .logo-stage .product-name { font-family: "Space Grotesk", sans-serif; font-weight: 500; font-size: 34px; letter-spacing: -0.01em; color: var(--slate); margin-left: 28px; }
+  .logo-stage.dark .product-name { color: var(--faint); }
+  .logo-stage .mark-big { display: grid; grid-template-columns: repeat(2, 44px); gap: 9px; }
+  .logo-stage .mark-big i { width: 44px; height: 44px; border-radius: 7px; background: var(--accent); }
+  .logo-stage .mark-big i:nth-child(2), .logo-stage .mark-big i:nth-child(3) { opacity: .3; background: var(--ink); }
+  .logo-stage.dark .mark-big i:nth-child(2), .logo-stage.dark .mark-big i:nth-child(3) { background: var(--paper); }
+
+  .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .logo-cell { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 40px 32px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .logo-cell.dark { background: var(--ink); }
+  .logo-cell .label { font-size: 12px; color: var(--slate); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+  .logo-cell.dark .label { color: var(--faint); }
+
+  /* Clearspace diagram */
+  .clearspace { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 96px; margin-top: 40px; display: flex; align-items: center; justify-content: center; min-height: 320px; }
+  .clearspace .zone { position: absolute; inset: 36px; border: 2px dashed var(--accent); border-radius: 12px; }
+  .clearspace .xkey { position: absolute; top: 44px; left: 44px; font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 32px; color: var(--accent); }
+  .clearspace .corner { position: absolute; font-family: "SF Mono", monospace; font-size: 11px; color: var(--slate); }
+  .clearspace .corner.tl { top: 40px; left: 40px; }
+
+  /* Color palette */
+  .swatch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+  .swatch { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--card); }
+  .swatch .color { height: 160px; }
+  .swatch .info { padding: 20px; }
+  .swatch .name { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 18px; }
+  .swatch .hex { font-family: "SF Mono", monospace; font-size: 13px; color: var(--slate); margin-top: 6px; }
+  .swatch .role { font-size: 13px; color: var(--slate); margin-top: 10px; line-height: 1.4; }
+
+  .shade-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 32px; }
+  .shade { height: 80px; border-radius: 10px; border: 1px solid var(--line); display: flex; align-items: flex-end; padding: 10px; font-size: 11px; font-family: "SF Mono", monospace; font-weight: 500; }
+
+  /* Typography */
+  .type-spec { border: 1px solid var(--line); border-radius: 16px; padding: 40px; background: var(--card); margin-top: 32px; }
+  .type-spec .sample { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 72px; line-height: 1; letter-spacing: -0.03em; }
+  .type-spec .meta { display: flex; gap: 40px; margin-top: 28px; font-size: 13px; color: var(--slate); flex-wrap: wrap; }
+  .type-spec .meta span { font-family: "SF Mono", monospace; color: var(--ink); font-weight: 500; }
+  .type-scale { margin-top: 40px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--card); }
+  .type-scale .row { display: flex; align-items: baseline; gap: 24px; padding: 20px 32px; border-bottom: 1px solid var(--line); }
+  .type-scale .row:last-child { border-bottom: none; }
+  .type-scale .row .name { width: 132px; font-size: 12px; color: var(--slate); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .type-scale .row .size { width: 96px; font-family: "SF Mono", monospace; font-size: 12px; color: var(--slate); }
+
+  /* Grid demo */
+  .grid-demo { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 32px; margin-top: 32px; height: 280px; position: relative; overflow: hidden; }
+  .grid-demo .col { position: absolute; top: 0; bottom: 0; background: rgba(216,254,83,0.16); border-left: 1px solid rgba(216,254,83,0.5); border-right: 1px solid rgba(216,254,83,0.5); }
+
+  /* Voice */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  .voice-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 32px; }
+  .voice-card h3 { font-size: 20px; margin-bottom: 14px; font-weight: 600; }
+  .voice-card ul { padding-left: 20px; margin: 0; }
+  .voice-card li { margin-bottom: 8px; line-height: 1.5; }
+  .voice-card p { margin: 0; color: var(--slate); line-height: 1.5; }
+
+  /* Do's & don'ts */
+  .dosdonts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  .dosdonts .card { border-radius: 16px; padding: 36px; border: 1px solid var(--line); }
+  .dosdonts .card.do { background: #eef7e2; border-color: #c8e6a0; }
+  .dosdonts .card.dont { background: #fdecea; border-color: #f5b8b3; }
+  .dosdonts .card h3 { font-size: 20px; margin-bottom: 14px; }
+  .dosdonts .card ul { padding-left: 20px; margin: 0; }
+  .dosdonts .card li { margin-bottom: 8px; line-height: 1.5; }
+
+  /* Applications */
+  .app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .app-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .app-card .preview { height: 200px; background: var(--paper-2); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--line); }
+  .app-card .meta { padding: 20px; }
+  .app-card .name { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 16px; }
+  .app-card .desc { font-size: 13px; color: var(--slate); margin-top: 6px; line-height: 1.4; }
+
+  /* Feature grid */
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .feat-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; transition: border-color .15s, transform .15s; }
+  .feat-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .feat-card .icon { width: 40px; height: 40px; border-radius: 10px; background: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .feat-card .icon svg { stroke: var(--accent); }
+  .feat-card h3 { font-size: 18px; margin-bottom: 8px; font-weight: 600; }
+  .feat-card p { font-size: 14px; color: var(--slate); margin: 0; line-height: 1.5; }
+
+  /* Comparison table */
+  .compare { margin-top: 40px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--card); }
+  .compare table { width: 100%; border-collapse: collapse; }
+  .compare th, .compare td { padding: 16px 24px; text-align: left; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .compare th { background: var(--paper-2); font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 15px; }
+  .compare th:first-child { color: var(--slate); font-weight: 500; }
+  .compare td:first-child { font-weight: 500; }
+  .compare tr:last-child td { border-bottom: none; }
+  .compare .yes { color: var(--ok); font-weight: 600; }
+  .compare .no { color: var(--danger); font-weight: 600; }
+  .compare .partial { color: var(--slate); }
+
+  /* Closing */
+  .closing { background: var(--ink); color: var(--paper); text-align: center; padding: 120px 56px; position: relative; overflow: hidden; }
+  .closing::before { content:""; position:absolute; inset:0; background-image: linear-gradient(rgba(216,254,83,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(216,254,83,0.05) 1px, transparent 1px); background-size: 48px 48px; }
+  .closing h2 { font-size: 48px; position: relative; }
+  .closing p { color: var(--faint); margin-top: 18px; position: relative; }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; }
+    .cover::before, .closing::before { display: none; }
+  }
+  @media (max-width: 900px) {
+    .page { padding: 0 24px; }
+    .cover { padding: 48px 24px; }
+    .cover h1 { font-size: 72px; }
+    .section-title { font-size: 36px; }
+    .toc, .voice-grid, .dosdonts, .app-grid, .feat-grid, .swatch-grid, .logo-grid { grid-template-columns: 1fr; }
+    .shade-row { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:48px;">
+      <div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;">OGR</span>
+    </div>
+    <div class="version-pill">Version 1.0 · October 2026</div>
+    <div class="accent-bar"></div>
+    <h1>OGR Bento<br>Grids</h1>
+    <div class="product-line">Brand Guidelines · Product Identity System</div>
+    <p class="sub">The identity and product system for OGR Bento Grids — the bento layout engine that out-works, out-scales and out-lasts the box-by-box way. Built for designers who ship brand identities in days, not months.</p>
+  </div>
+  <div class="meta">
+    <span>OGR Studio · ogr.studio</span>
+    <span>Confidential · For internal and partner use</span>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- CONTENTS -->
+<section id="contents">
+  <div class="eyebrow">Contents</div>
+  <h2 class="section-title">What's inside.</h2>
+  <p class="section-lead">A single source of truth for the OGR Bento Grids identity and product. Every rule here exists so the brand stays consistent across the plugin, the marketing site, the documentation and the community.</p>
+  <div class="toc">
+    <a href="#story"><span>01 Brand story</span><span class="num">02</span></a>
+    <a href="#product"><span>02 Product — OGR Bento Grids</span><span class="num">03</span></a>
+    <a href="#positioning"><span>03 Positioning vs. the market</span><span class="num">04</span></a>
+    <a href="#logo"><span>04 Logo</span><span class="num">05</span></a>
+    <a href="#clearspace"><span>05 Clearspace & minimum size</span><span class="num">06</span></a>
+    <a href="#color"><span>06 Colour</span><span class="num">07</span></a>
+    <a href="#type"><span>07 Typography</span><span class="num">08</span></a>
+    <a href="#grid"><span>08 Grid & spacing</span><span class="num">09</span></a>
+    <a href="#icon"><span>09 Iconography</span><span class="num">10</span></a>
+    <a href="#voice"><span>10 Voice & tone</span><span class="num">11</span></a>
+    <a href="#features"><span>11 Feature set</span><span class="num">12</span></a>
+    <a href="#apps"><span>12 Applications</span><span class="num">13</span></a>
+    <a href="#dosdonts"><span>13 Do's & don'ts</span><span class="num">14</span></a>
+    <a href="#a11y"><span>14 Accessibility</span><span class="num">15</span></a>
+    <a href="#versioning"><span>15 Versioning</span><span class="num">16</span></a>
+  </div>
+</section>
+
+<!-- 01 BRAND STORY -->
+<section id="story">
+  <div class="eyebrow">01 · Brand story</div>
+  <h2 class="section-title">Why OGR Bento Grids exists.</h2>
+  <p class="section-lead">Bento grids are the default language of modern brand presentation — portfolios, case studies, social carousels, launch pages. Building them by hand is slow, rigid and repetitive. OGR Bento Grids makes the layout a one-click, live, editable system, so designers spend their time on content, not rectangles.</p>
+  <div class="voice-grid">
+    <div class="voice-card">
+      <h3>Mission</h3>
+      <p>Make bento layouts a live, editable system instead of a stack of nudged rectangles — so consistency is the default, not a chore.</p>
+    </div>
+    <div class="voice-card">
+      <h3>Vision</h3>
+      <p>Every brand ships its case study, Behance post and Instagram carousel from one layout, in one click, with the brand already baked in.</p>
+    </div>
+    <div class="voice-card">
+      <h3>Values</h3>
+      <ul>
+        <li><strong>Power.</strong> More styles, more control, more output than anything else on the market.</li>
+        <li><strong>Speed.</strong> Hours become seconds. Regenerate freely.</li>
+        <li><strong>Control.</strong> Live while you tune, editable after you finalise.</li>
+        <li><strong>Cohesion.</strong> One layout feeds every surface.</li>
+      </ul>
+    </div>
+    <div class="voice-card">
+      <h3>Positioning</h3>
+      <p>For designers and studios who deliver brand identity work. OGR Bento Grids is the layout engine inside the OGR suite — the bridge between a finished logo and a finished presentation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PRODUCT -->
+<section id="product">
+  <div class="eyebrow">02 · Product</div>
+  <h2 class="section-title">OGR Bento Grids.</h2>
+  <p class="section-lead">A bento grid layout engine that lives inside Adobe Illustrator. Draw a rectangle, pick a style, tune with live sliders, shuffle until it fits, then finalise into plain editable shapes — and export to every format from one layout.</p>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <h3>12+ layout styles</h3>
+      <p>Simple, Centered, Brick, Random, Masonry, Asymmetric, Hero, Magazine, Dashboard, Social, Story, Collage — far beyond the basic four.</p>
+    </div>
+    <div class="feat-card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></div>
+      <h3>Live preview panel</h3>
+      <p>A CEP panel previews the layout as you tune — no round-tripping to the artboard to see the result.</p>
+    </div>
+    <div class="feat-card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <h3>Auto masking</h3>
+      <p>Drop images in and OGR fits, crops and masks them to each tile automatically — no manual clipping masks.</p>
+    </div>
+    <div class="feat-card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z"/></svg></div>
+      <h3>Brand-aware</h3>
+      <p>Pulls colours and fonts from OGR Brand Guidelines / swatches, so every tile already wears the brand.</p>
+    </div>
+    <div class="feat-card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h3>One-click export</h3>
+      <p>PNG, JPG, PDF, SVG, WebP — plus platform presets for Instagram, LinkedIn, YouTube, Behance, A4 and slides.</p>
+    </div>
+    <div class="feat-card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div>
+      <h3>Non-destructive</h3>
+      <p>Keep the layout live and editable after generation — tune, shuffle and re-export without rebuilding.</p>
+    </div>
+    <div class="feat-card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+      <h3>Template library</h3>
+      <p>Save, name and reuse layouts across projects. Share templates across the studio via Brand Hub.</p>
+    </div>
+    <div class="feat-card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3>AI-assisted layouts</h3>
+      <p>Optional layout suggestions from your content — image aspect ratios, text length and brand rules inform the grid.</p>
+    </div>
+    <div class="feat-card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></div>
+      <h3>Batch variants</h3>
+      <p>Generate N variations of the same settings in one run, then pick the winner.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 POSITIONING -->
+<section id="positioning">
+  <div class="eyebrow">03 · Positioning vs. the market</div>
+  <h2 class="section-title">More powerful, on every axis.</h2>
+  <p class="section-lead">A direct comparison against the nearest alternative. OGR Bento Grids wins on style count, automation, brand integration and export — without giving up the plain-shapes output designers rely on.</p>
+  <div class="compare">
+    <table>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>OGR Bento Grids</th>
+          <th>Akrivi Bento Grids</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Layout styles</td><td class="yes">12+</td><td class="partial">4</td></tr>
+        <tr><td>Live preview panel</td><td class="yes">Yes</td><td class="no">No (artboard only)</td></tr>
+        <tr><td>Auto image masking</td><td class="yes">Yes</td><td class="no">Manual</td></tr>
+        <tr><td>Brand colour/font integration</td><td class="yes">Yes</td><td class="no">No</td></tr>
+        <tr><td>Platform export presets</td><td class="yes">12+</td><td class="partial">None</td></tr>
+        <tr><td>Template library</td><td class="yes">Yes</td><td class="no">No</td></tr>
+        <tr><td>Non-destructive editing</td><td class="yes">Yes</td><td class="no">Flattened only</td></tr>
+        <tr><td>AI-assisted layouts</td><td class="yes">Optional</td><td class="no">No</td></tr>
+        <tr><td>Batch variants</td><td class="yes">Yes</td><td class="no">No</td></tr>
+        <tr><td>Plain editable shapes output</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Works at any size</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Illustrator 2021–2027</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>macOS & Windows</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 04 LOGO -->
+<section id="logo">
+  <div class="eyebrow">04 · Logo</div>
+  <h2 class="section-title">The mark.</h2>
+  <p class="section-lead">A 2×2 grid. Two cells filled with the signal accent, two faded. It reads as a window, a grid, a system — and it is drawn from the same geometry the products generate. OGR Bento Grids inherits the OGR mark; the product name sits beside it as a secondary wordmark.</p>
+  <div class="logo-stage">
+    <div style="display:flex;align-items:center;gap:28px;">
+      <div class="mark-big" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <span class="wordmark">OGR</span>
+      <span class="product-name">Bento Grids</span>
+    </div>
+  </div>
+  <div class="logo-grid">
+    <div class="logo-cell">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <div style="display:grid;grid-template-columns:repeat(2,16px);gap:3px;"><i style="width:16px;height:16px;border-radius:2px;background:#d8fe53;display:block;"></i><i style="width:16px;height:16px;border-radius:2px;background:#141518;opacity:.3;display:block;"></i><i style="width:16px;height:16px;border-radius:2px;background:#141518;opacity:.3;display:block;"></i><i style="width:16px;height:16px;border-radius:2px;background:#d8fe53;display:block;"></i></div>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;">OGR</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;color:#6b7079;">Bento Grids</span>
+      </div>
+      <span class="label">Primary — horizontal lockup</span>
+    </div>
+    <div class="logo-cell dark">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <div style="display:grid;grid-template-columns:repeat(2,16px);gap:3px;"><i style="width:16px;height:16px;border-radius:2px;background:#d8fe53;display:block;"></i><i style="width:16px;height:16px;border-radius:2px;background:#f5f4ef;opacity:.3;display:block;"></i><i style="width:16px;height:16px;border-radius:2px;background:#f5f4ef;opacity:.3;display:block;"></i><i style="width:16px;height:16px;border-radius:2px;background:#d8fe53;display:block;"></i></div>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:#f5f4ef;">OGR</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;color:#a3a7af;">Bento Grids</span>
+      </div>
+      <span class="label">On dark</span>
+    </div>
+    <div class="logo-cell">
+      <div style="display:grid;grid-template-columns:repeat(2,28px);gap:5px;"><i style="width:28px;height:28px;border-radius:4px;background:#d8fe53;display:block;"></i><i style="width:28px;height:28px;border-radius:4px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:28px;height:28px;border-radius:4px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:28px;height:28px;border-radius:4px;background:#d8fe53;display:block;"></i></div>
+      <span class="label">Mark only</span>
+    </div>
+  </div>
+  <p style="margin-top:28px;color:var(--slate);font-size:14px;line-height:1.5;">Always pair the mark with the OGR wordmark in first-use contexts. The product name "Bento Grids" follows in the lighter weight. The mark alone is reserved for app icons, favicons and tight spaces.</p>
+</section>
+
+<!-- 05 CLEARSPACE -->
+<section id="clearspace">
+  <div class="eyebrow">05 · Clearspace & minimum size</div>
+  <h2 class="section-title">Give it room.</h2>
+  <p class="section-lead">The exclusion zone is one quarter of the mark's height (X) on every side. Nothing — type, imagery, other logos — enters this zone.</p>
+  <div class="clearspace">
+    <div class="zone"></div>
+    <div class="xkey">X</div>
+    <div style="display:flex;align-items:center;gap:18px;position:relative;z-index:2;">
+      <div style="display:grid;grid-template-columns:repeat(2,36px);gap:7px;"><i style="width:36px;height:36px;border-radius:5px;background:#d8fe53;display:block;"></i><i style="width:36px;height:36px;border-radius:5px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:36px;height:36px;border-radius:5px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:36px;height:36px;border-radius:5px;background:#d8fe53;display:block;"></i></div>
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:52px;">OGR</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:28px;color:#6b7079;">Bento Grids</span>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;">
+    <div class="voice-card"><h3>Minimum print</h3><p>24 mm wide for the horizontal lockup. Below this, use the mark only.</p></div>
+    <div class="voice-card"><h3>Minimum screen</h3><p>96 px wide for the horizontal lockup. Below this, use the mark only.</p></div>
+    <div class="voice-card"><h3>Clearspace unit</h3><p>X = 25% of the mark height. Applies to all four sides, always.</p></div>
+  </div>
+</section>
+
+<!-- 06 COLOR -->
+<section id="color">
+  <div class="eyebrow">06 · Colour</div>
+  <h2 class="section-title">The palette.</h2>
+  <p class="section-lead">One signal colour on a neutral field. The accent is earned — it marks action, emphasis and selection, never decoration. Inherited from the OGR family so the suite reads as one product.</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="color" style="background:#d8fe53;"></div>
+      <div class="info"><div class="name">Signal</div><div class="hex">#D8FE53</div><div class="role">Primary accent · CTAs, emphasis, selection, the mark</div></div>
+    </div>
+    <div class="swatch">
+      <div class="color" style="background:#0b0c0f;"></div>
+      <div class="info"><div class="name">Ink</div><div class="hex">#0B0C0F</div><div class="role">Primary text · dark surfaces · the canvas</div></div>
+    </div>
+    <div class="swatch">
+      <div class="color" style="background:#f5f4ef;border-bottom:1px solid #ddddd4;"></div>
+      <div class="info"><div class="name">Paper</div><div class="hex">#F5F4EF</div><div class="role">Primary background · light surfaces</div></div>
+    </div>
+    <div class="swatch">
+      <div class="color" style="background:#6b7079;"></div>
+      <div class="info"><div class="name">Slate</div><div class="hex">#6B7079</div><div class="role">Secondary text · captions · metadata</div></div>
+    </div>
+  </div>
+  <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;margin-top:48px;margin-bottom:10px;">Shades & tints — Signal</h3>
+  <div class="shade-row">
+    <div class="shade" style="background:#9fc42e;color:#fff;">Shade 50</div>
+    <div class="shade" style="background:#bcdf40;color:#0b0c0f;">Shade 25</div>
+    <div class="shade" style="background:#d8fe53;color:#0b0c0f;">Base</div>
+    <div class="shade" style="background:#e3fe7a;color:#0b0c0f;">Tint 25</div>
+    <div class="shade" style="background:#effea3;color:#0b0c0f;">Tint 50</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;">
+    <div class="voice-card"><h3>Usage ratio</h3><p>80% Paper/Ink neutrals, 15% Slate, 5% Signal. The accent is never more than 5% of any surface.</p></div>
+    <div class="voice-card"><h3>On dark</h3><p>Signal stays the same hex on dark surfaces. Paper becomes the text colour. Ink is never used on dark.</p></div>
+    <div class="voice-card"><h3>Never</h3><p>Never recolour the mark. Never use Signal as a background for body text. Never introduce new hues without updating this document.</p></div>
+  </div>
+</section>
+
+<!-- 07 TYPOGRAPHY -->
+<section id="type">
+  <div class="eyebrow">07 · Typography</div>
+  <h2 class="section-title">Type.</h2>
+  <p class="section-lead">Space Grotesk for display, Inter for everything else. Two families, no more. Weight and size do the hierarchy. Same stack as the OGR family.</p>
+  <div class="type-spec">
+    <div class="sample">Aa Bb Cc 0123</div>
+    <div class="meta">
+      <div><span>Space Grotesk</span> · Display · 700</div>
+      <div><span>Tracking</span> · -0.03em</div>
+      <div><span>Leading</span> · 1.0</div>
+    </div>
+  </div>
+  <div class="type-spec" style="margin-top:20px;">
+    <div style="font-family:'Inter',sans-serif;font-weight:400;font-size:34px;line-height:1.3;">The quick brown fox jumps over the lazy dog.</div>
+    <div class="meta">
+      <div><span>Inter</span> · Body · 400</div>
+      <div><span>Tracking</span> · 0</div>
+      <div><span>Leading</span> · 1.55</div>
+    </div>
+  </div>
+  <div class="type-scale">
+    <div class="row"><span class="name">Display XL</span><span class="size">96 / 700</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:48px;line-height:1;">OGR Bento Grids</span></div>
+    <div class="row"><span class="name">Display L</span><span class="size">48 / 700</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:32px;line-height:1;">Section title</span></div>
+    <div class="row"><span class="name">Heading</span><span class="size">24 / 600</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;">Subsection heading</span></div>
+    <div class="row"><span class="name">Body</span><span class="size">16 / 400</span><span style="font-family:'Inter',sans-serif;font-weight:400;font-size:16px;">Body copy for paragraphs and long-form reading.</span></div>
+    <div class="row"><span class="name">Caption</span><span class="size">13 / 500</span><span style="font-family:'Inter',sans-serif;font-weight:500;font-size:13px;color:#6b7079;">Metadata, captions and footnotes.</span></div>
+    <div class="row"><span class="name">Eyebrow</span><span class="size">12 / 600</span><span style="font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#6b7079;">Section labels</span></div>
+    <div class="row"><span class="name">Mono</span><span class="size">13 / 400</span><span style="font-family:'SF Mono',monospace;font-size:13px;color:#6b7079;">#D8FE53 · 1920 × 1080 · 8 pt grid</span></div>
+  </div>
+</section>
+
+<!-- 08 GRID -->
+<section id="grid">
+  <div class="eyebrow">08 · Grid & spacing</div>
+  <h2 class="section-title">The system behind the system.</h2>
+  <p class="section-lead">An 8-point base grid. All spacing is a multiple of 8. Layouts use a 12-column grid with 24px gutters. The same grid the plugin generates — brand and product share one geometry.</p>
+  <div class="grid-demo" id="gridDemo"></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px;">
+    <div class="voice-card"><h3>Base unit</h3><p>8 px. Every margin, padding and gap is a multiple of 8.</p></div>
+    <div class="voice-card"><h3>Columns</h3><p>12 columns, 24 px gutters, 48 px outer margins on desktop.</p></div>
+    <div class="voice-card"><h3>Radius</h3><p>4 / 8 / 12 / 16 px. Cards use 12, buttons 8, inputs 6.</p></div>
+    <div class="voice-card"><h3>Motion</h3><p>150 ms ease-out for micro-interactions. Nothing bounces. Respect prefers-reduced-motion.</p></div>
+  </div>
+</section>
+
+<!-- 09 ICONOGRAPHY -->
+<section id="icon">
+  <div class="eyebrow">09 · Iconography</div>
+  <h2 class="section-title">Icons.</h2>
+  <p class="section-lead">Stroke-based, 1.5 px, rounded caps and joins. 24×24 viewBox. Drawn to sit optically centred on the 8-point grid. Icons inherit text colour.</p>
+  <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:16px;margin-top:40px;">
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;height:80px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;height:80px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;height:80px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z"/></svg></div>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;height:80px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></div>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;height:80px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;height:80px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;height:80px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;height:80px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+  </div>
+  <p style="margin-top:28px;color:var(--slate);font-size:14px;line-height:1.5;">Icons inherit text colour. Use Ink on light, Paper on dark. Never fill icons with Signal — it competes with the mark.</p>
+</section>
+
+<!-- 10 VOICE -->
+<section id="voice">
+  <div class="eyebrow">10 · Voice & tone</div>
+  <h2 class="section-title">How we sound.</h2>
+  <p class="section-lead">Precise, confident, designer-to-designer. No marketing fluff. Say what it does, then stop. The product is powerful; the copy does not need to shout.</p>
+  <div class="voice-grid">
+    <div class="voice-card">
+      <h3>We are</h3>
+      <ul>
+        <li>Direct. Short sentences. Active voice.</li>
+        <li>Specific. Numbers over adjectives.</li>
+        <li>Respectful of the reader's time.</li>
+        <li>Quietly confident — no hype words.</li>
+      </ul>
+    </div>
+    <div class="voice-card">
+      <h3>We are not</h3>
+      <ul>
+        <li>Chatty, cute or clever for its own sake.</li>
+        <li>Jargon-heavy or acronym-laden.</li>
+        <li>Apologetic about pricing or limitations.</li>
+        <li>Exclamation-mark people.</li>
+      </ul>
+    </div>
+    <div class="voice-card">
+      <h3>Preferred words</h3>
+      <p>generate, draw, build, export, measure, consistent, editable, one click, in seconds, live, tune, shuffle, finalise.</p>
+    </div>
+    <div class="voice-card">
+      <h3>Avoid</h3>
+      <p>revolutionary, magic, seamless, delightful, empower, leverage, synergy, solution, box by box.</p>
+    </div>
+  </div>
+  <div style="margin-top:40px;padding:28px;background:var(--card);border:1px solid var(--line);border-radius:16px;">
+    <div style="font-size:13px;color:var(--slate);margin-bottom:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">Example — good</div>
+    <p style="margin:0;font-size:16px;line-height:1.5;">"Bento grids in one click, not box by box. Draw a rectangle, pick a style, tune with live sliders, then finalise into plain editable shapes."</p>
+    <div style="font-size:13px;color:var(--slate);margin:20px 0 10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">Example — avoid</div>
+    <p style="margin:0;font-size:16px;color:var(--slate);line-height:1.5;">"Our revolutionary AI-powered solution empowers designers to effortlessly create stunning bento grids in no time!"</p>
+  </div>
+</section>
+
+<!-- 11 FEATURES -->
+<section id="features">
+  <div class="eyebrow">11 · Feature set</div>
+  <h2 class="section-title">What ships in v1.</h2>
+  <p class="section-lead">The minimum lovable product. Everything below is in the first release; everything else is roadmap.</p>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px;">
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);">
+      <span style="color:var(--ok);font-weight:700;font-size:18px;line-height:1;">✓</span>
+      <div><div style="font-weight:600;font-size:15px;">12+ layout styles</div><div style="font-size:13px;color:var(--slate);margin-top:4px;">Simple, Centered, Brick, Random, Masonry, Asymmetric, Hero, Magazine, Dashboard, Social, Story, Collage.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);">
+      <span style="color:var(--ok);font-weight:700;font-size:18px;line-height:1;">✓</span>
+      <div><div style="font-weight:600;font-size:15px;">Live sliders</div><div style="font-size:13px;color:var(--slate);margin-top:4px;">Sections, corners, gutter — every change shows as you make it.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);">
+      <span style="color:var(--ok);font-weight:700;font-size:18px;line-height:1;">✓</span>
+      <div><div style="font-weight:600;font-size:15px;">Shuffle</div><div style="font-size:13px;color:var(--slate);margin-top:4px;">Same settings, new composition. Infinite variations.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);">
+      <span style="color:var(--ok);font-weight:700;font-size:18px;line-height:1;">✓</span>
+      <div><div style="font-weight:600;font-size:15px;">Finalise to plain shapes</div><div style="font-size:13px;color:var(--slate);margin-top:4px;">No groups or live effects. Mask images in as normal.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);">
+      <span style="color:var(--ok);font-weight:700;font-size:18px;line-height:1;">✓</span>
+      <div><div style="font-weight:600;font-size:15px;">Any rectangle, any size</div><div style="font-size:13px;color:var(--slate);margin-top:4px;">Slide, A4 page, 1080px square — the grid fills what you draw.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);">
+      <span style="color:var(--ok);font-weight:700;font-size:18px;line-height:1;">✓</span>
+      <div><div style="font-weight:600;font-size:15px;">CEP panel (HTML/CSS/JS)</div><div style="font-size:13px;color:var(--slate);margin-top:4px;">Adaptive dark/light panel, same architecture as the OGR family.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);">
+      <span style="color:var(--ok);font-weight:700;font-size:18px;line-height:1;">✓</span>
+      <div><div style="font-weight:600;font-size:15px;">ExtendScript host (ES3)</div><div style="font-size:13px;color:var(--slate);margin-top:4px;">Pure layout library, no dependencies, shared with tests.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);">
+      <span style="color:var(--ok);font-weight:700;font-size:18px;line-height:1;">✓</span>
+      <div><div style="font-weight:600;font-size:15px;">macOS & Windows installers</div><div style="font-size:13px;color:var(--slate);margin-top:4px;">.command / .bat, debug mode enabled, no build step.</div></div>
+    </div>
+  </div>
+  <div style="margin-top:32px;padding:24px;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;">
+    <div style="font-size:13px;color:var(--slate);margin-bottom:8px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">Roadmap (v2+)</div>
+    <p style="margin:0;font-size:14px;color:var(--slate);line-height:1.6;">Auto image masking · Brand-aware colour/font pull · Platform export presets · Template library · AI-assisted layouts · Batch variants · Non-destructive live editing · Brand Hub sharing.</p>
+  </div>
+</section>
+
+<!-- 12 APPLICATIONS -->
+<section id="apps">
+  <div class="eyebrow">12 · Applications</div>
+  <h2 class="section-title">In the wild.</h2>
+  <p class="section-lead">The identity applied. Each mockup is a real layout, not a render — reproduce from the specs above.</p>
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="preview">
+        <div style="width:132px;height:80px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:8px;"><div style="display:grid;grid-template-columns:repeat(2,7px);gap:1px;"><i style="width:7px;height:7px;border-radius:1px;background:#d8fe53;display:block;"></i><i style="width:7px;height:7px;border-radius:1px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:7px;height:7px;border-radius:1px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:7px;height:7px;border-radius:1px;background:#d8fe53;display:block;"></i></div><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;">OGR</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:8px;color:#6b7079;">Bento Grids</span></div>
+          <div style="font-size:9px;color:#6b7079;">hi@ogr.studio · ogr.studio</div>
+        </div>
+      </div>
+      <div class="meta"><div class="name">Business card</div><div class="desc">85 × 55 mm · Paper stock · Ink type</div></div>
+    </div>
+    <div class="app-card">
+      <div class="preview">
+        <div style="width:120px;height:164px;background:#fff;border:1px solid var(--line);border-radius:3px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:6px;"><div style="display:grid;grid-template-columns:repeat(2,6px);gap:1px;"><i style="width:6px;height:6px;border-radius:1px;background:#d8fe53;display:block;"></i><i style="width:6px;height:6px;border-radius:1px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:6px;height:6px;border-radius:1px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:6px;height:6px;border-radius:1px;background:#d8fe53;display:block;"></i></div><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:10px;">OGR</span></div>
+          <div style="height:1px;background:#ddddd4;"></div>
+          <div style="font-size:8px;color:#6b7079;line-height:1.4;">Studio OGR<br>hi@ogr.studio<br>ogr.studio</div>
+        </div>
+      </div>
+      <div class="meta"><div class="name">Letterhead</div><div class="desc">A4 · 24 mm top margin · Ink wordmark</div></div>
+    </div>
+    <div class="app-card">
+      <div class="preview" style="background:#0b0c0f;">
+        <div style="width:72px;height:72px;border-radius:16px;background:#d8fe53;display:flex;align-items:center;justify-content:center;">
+          <div style="display:grid;grid-template-columns:repeat(2,16px);gap:3px;"><i style="width:16px;height:16px;border-radius:2px;background:#0b0c0f;display:block;"></i><i style="width:16px;height:16px;border-radius:2px;background:#f5f4ef;opacity:.3;display:block;"></i><i style="width:16px;height:16px;border-radius:2px;background:#f5f4ef;opacity:.3;display:block;"></i><i style="width:16px;height:16px;border-radius:2px;background:#0b0c0f;display:block;"></i></div>
+        </div>
+      </div>
+      <div class="meta"><div class="name">App icon</div><div class="desc">1024 × 1024 · Signal tile · Ink mark</div></div>
+    </div>
+    <div class="app-card">
+      <div class="preview" style="background:#0b0c0f;">
+        <div style="width:80px;height:80px;border-radius:50%;background:#0b0c0f;border:2px solid #d8fe53;display:flex;align-items:center;justify-content:center;">
+          <div style="display:grid;grid-template-columns:repeat(2,14px);gap:2px;"><i style="width:14px;height:14px;border-radius:2px;background:#d8fe53;display:block;"></i><i style="width:14px;height:14px;border-radius:2px;background:#f5f4ef;opacity:.3;display:block;"></i><i style="width:14px;height:14px;border-radius:2px;background:#f5f4ef;opacity:.3;display:block;"></i><i style="width:14px;height:14px;border-radius:2px;background:#d8fe53;display:block;"></i></div>
+        </div>
+      </div>
+      <div class="meta"><div class="name">Social avatar</div><div class="desc">Circular · Ink field · Signal mark</div></div>
+    </div>
+    <div class="app-card">
+      <div class="preview">
+        <div style="width:164px;height:44px;background:#0b0c0f;border-radius:6px;display:flex;align-items:center;padding:0 14px;gap:10px;">
+          <div style="display:grid;grid-template-columns:repeat(2,9px);gap:1px;"><i style="width:9px;height:9px;border-radius:1px;background:#d8fe53;display:block;"></i><i style="width:9px;height:9px;border-radius:1px;background:#f5f4ef;opacity:.3;display:block;"></i><i style="width:9px;height:9px;border-radius:1px;background:#f5f4ef;opacity:.3;display:block;"></i><i style="width:9px;height:9px;border-radius:1px;background:#d8fe53;display:block;"></i></div>
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#f5f4ef;">OGR</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:9px;color:#a3a7af;margin-left:auto;">Bento grids, one click.</span>
+        </div>
+      </div>
+      <div class="meta"><div class="name">Signage / banner</div><div class="desc">Storefront · Ink field · Signal accent</div></div>
+    </div>
+    <div class="app-card">
+      <div class="preview">
+        <div style="width:150px;height:88px;background:#f5f4ef;border:1px solid #ddddd4;border-radius:6px;padding:10px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:6px;"><div style="display:grid;grid-template-columns:repeat(2,6px);gap:1px;"><i style="width:6px;height:6px;border-radius:1px;background:#d8fe53;display:block;"></i><i style="width:6px;height:6px;border-radius:1px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:6px;height:6px;border-radius:1px;background:#0b0c0f;opacity:.3;display:block;"></i><i style="width:6px;height:6px;border-radius:1px;background:#d8fe53;display:block;"></i></div><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:10px;">OGR</span></div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;line-height:1;color:#0b0c0f;">Bento grids<br>in one click.</div>
+        </div>
+      </div>
+      <div class="meta"><div class="name">Social / ad</div><div class="desc">1080 × 1080 · Paper field · Ink type</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 DOS & DON'TS -->
+<section id="dosdonts">
+  <div class="eyebrow">13 · Do's & don'ts</div>
+  <h2 class="section-title">Rules, not suggestions.</h2>
+  <p class="section-lead">The mark is a system. Treat it like one.</p>
+  <div class="dosdonts">
+    <div class="card do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use the mark and wordmark together in first-use contexts.</li>
+        <li>Keep the clearspace intact on every side.</li>
+        <li>Use Signal only for emphasis, CTAs and selection.</li>
+        <li>Scale uniformly — never stretch or squash.</li>
+        <li>Place on Paper or Ink backgrounds.</li>
+        <li>Inherit the OGR family identity across products.</li>
+      </ul>
+    </div>
+    <div class="card dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Recolour the mark or the wordmark.</li>
+        <li>Rotate, skew or add effects (shadows, glows, outlines).</li>
+        <li>Crop the mark or remove a cell.</li>
+        <li>Place on busy photography or low-contrast backgrounds.</li>
+        <li>Use Signal as a large background fill.</li>
+        <li>Introduce new hues without updating this document.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 14 ACCESSIBILITY -->
+<section id="a11y">
+  <div class="eyebrow">14 · Accessibility</div>
+  <h2 class="section-title">Everyone gets in.</h2>
+  <p class="section-lead">Accessibility is a brand requirement, not a checklist. These are the minimums.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;">
+    <div class="voice-card"><h3>Contrast</h3><p>Ink on Paper: 16.8:1. Signal on Ink: 11.2:1. Both pass AAA. Signal on Paper fails — never use for body text.</p></div>
+    <div class="voice-card"><h3>Motion</h3><p>Respect prefers-reduced-motion. No auto-playing animation. Transitions under 200 ms.</p></div>
+    <div class="voice-card"><h3>Focus</h3><p>Visible focus ring in Signal, 2 px, 2 px offset. Never remove outline without a replacement.</p></div>
+  </div>
+</section>
+
+<!-- 15 VERSIONING -->
+<section id="versioning">
+  <div class="eyebrow">15 · Versioning</div>
+  <h2 class="section-title">How this document evolves.</h2>
+  <p class="section-lead">This document is versioned. Changes are additive unless marked breaking. The plugin, the marketing site and the documentation all track the latest version.</p>
+  <div style="margin-top:40px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);">
+    <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:0;padding:16px 24px;background:var(--paper-2);border-bottom:1px solid var(--line);font-size:13px;font-weight:600;color:var(--slate);letter-spacing:0.08em;text-transform:uppercase;">
+      <span>Version</span><span>Date</span><span>Notes</span>
+    </div>
+    <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:0;padding:16px 24px;border-bottom:1px solid var(--line);">
+      <span style="font-family:'SF Mono',monospace;font-size:13px;font-weight:600;">1.0</span><span style="font-size:14px;color:var(--slate);">Oct 2026</span><span style="font-size:14px;">Initial release. Identity, product, positioning, applications.</span>
+    </div>
+    <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:0;padding:16px 24px;">
+      <span style="font-family:'SF Mono',monospace;font-size:13px;font-weight:600;color:var(--slate);">1.1</span><span style="font-size:14px;color:var(--slate);">TBD</span><span style="font-size:14px;color:var(--slate);">Roadmap features land as they ship.</span>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="closing">
+  <h2>That's the brand.</h2>
+  <p>OGR Bento Grids · Brand Guidelines · Version 1.0 · October 2026 · OGR Studio</p>
+  <p style="margin-top:8px;font-size:13px;">Questions: hi@ogr.studio · ogr.studio</p>
+</div>
+
+<script>
+  // Build the grid demo columns
+  const demo = document.getElementById('gridDemo');
+  const cols = 12;
+  const gap = 24;
+  const margin = 32;
+  const w = demo.clientWidth - margin*2;
+  const colW = (w - gap*(cols-1)) / cols;
+  for (let i = 0; i < cols; i++) {
+    const c = document.createElement('div');
+    c.className = 'col';
+    c.style.left = (margin + i*(colW+gap)) + 'px';
+    c.style.width = colW + 'px';
+    demo.appendChild(c);
+  }
+</script>
+</body>
+</html>

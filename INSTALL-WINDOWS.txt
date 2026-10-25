@@ -1,0 +1,35 @@
+OGR Bento Grids — Install on Windows
+====================================
+
+1. Right-click OGR-Bento-Grids-Plugin.zip and choose "Extract All...".
+2. Quit Adobe Illustrator completely.
+3. Open the extracted OGR Bento Grids folder and double-click install.bat.
+   - If Windows SmartScreen appears, choose "More info" then "Run anyway".
+   - Do NOT use "Run as administrator". The panel installs into your own
+     user profile; admin would install it to the wrong one.
+4. Reopen Illustrator.
+5. Go to Window > Extensions > OGR Bento Grids.
+
+
+If OGR Bento Grids is not in the menu
+-------------------------------------
+- Quit Illustrator completely (File > Exit) and reopen.
+- If the zip came from email or a browser, right-click the zip, open
+  Properties, tick "Unblock", extract again, and run install.bat once more.
+- Check the plugin folder exists:
+
+    %APPDATA%\Adobe\CEP\extensions\com.ogr.bentogrids
+
+- Check debug mode is enabled. In Command Prompt, run:
+
+    reg query "HKCU\Software\Adobe\CSXS.11" /v PlayerDebugMode
+
+  It should show PlayerDebugMode with the value 1.
+
+
+Uninstall
+---------
+1. Quit Illustrator.
+2. Run uninstall.bat.
+
+OGR Bento Grids layers already drawn in .ai files are not removed.

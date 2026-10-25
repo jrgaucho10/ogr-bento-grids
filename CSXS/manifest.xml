@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  OGR Bento Grids — CEP panel for Adobe Illustrator
+  Bundle: com.ogr.bentogrids
+-->
+<ExtensionManifest
+  Version="7.0"
+  ExtensionBundleId="com.ogr.bentogrids"
+  ExtensionBundleVersion="0.1.0"
+  ExtensionBundleName="OGR Bento Grids"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <ExtensionList>
+    <Extension Id="com.ogr.bentogrids.main" Version="0.1.0"/>
+  </ExtensionList>
+
+  <ExecutionEnvironment>
+    <HostList>
+      <Host Name="ILST" Version="[25.0,99.9]"/>
+    </HostList>
+    <LocaleList>
+      <Locale Code="All"/>
+    </LocaleList>
+    <RequiredRuntimeList>
+      <RequiredRuntime Name="CSXS" Version="9.0"/>
+    </RequiredRuntimeList>
+  </ExecutionEnvironment>
+
+  <DispatchInfoList>
+    <Extension Id="com.ogr.bentogrids.main">
+      <DispatchInfo>
+        <Resources>
+          <MainPath>./client/index.html</MainPath>
+          <ScriptPath>./jsx/host.jsx</ScriptPath>
+        </Resources>
+        <Lifecycle>
+          <AutoVisible>true</AutoVisible>
+        </Lifecycle>
+        <UI>
+          <Type>Panel</Type>
+          <Menu>OGR Bento Grids</Menu>
+          <Geometry>
+            <Size>
+              <Height>720</Height>
+              <Width>360</Width>
+            </Size>
+            <MinSize>
+              <Height>500</Height>
+              <Width>320</Width>
+            </MinSize>
+            <MaxSize>
+              <Height>2400</Height>
+              <Width>1200</Width>
+            </MaxSize>
+          </Geometry>
+        </UI>
+      </DispatchInfo>
+    </Extension>
+  </DispatchInfoList>
+</ExtensionManifest>

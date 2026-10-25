@@ -1,0 +1,15 @@
+{
+  "name": "ogr-bento-grids",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OGR Bento Grids — bento layout engine panel for Adobe Illustrator",
+  "license": "MIT",
+  "scripts": {
+    "install-panel": "./install.command",
+    "uninstall-panel": "./uninstall.command",
+    "test": "node test/geometry.test.mjs",
+    "test:geometry": "node test/geometry.test.mjs",
+    "test:illustrator": "osascript -e 'tell application \"Adobe Illustrator\" to do javascript (POSIX file \"'\"$(pwd)\"'/test/illustrator.test.jsx\")'",
+    "preview": "python3 -m http.server 4175 --bind 127.0.0.1"
+  }
+}
